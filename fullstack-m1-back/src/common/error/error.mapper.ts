@@ -1,6 +1,6 @@
 import { ErrorType } from './error.model';
-import {PrimaryKeyError} from "./repository-error.models";
-import {EmptyResultError} from "sequelize";
+import {PrimaryKeyError} from './repository-error.models';
+import {EmptyResultError} from 'sequelize';
 
 export const itemErrorHandler = id => error => {
     if (error instanceof PrimaryKeyError || error instanceof EmptyResultError) {

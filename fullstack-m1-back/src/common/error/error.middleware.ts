@@ -1,5 +1,5 @@
-import {ErrorType, IAppError} from "./error.model";
-import {NextFunction, Request, Response} from "express";
+import {ErrorType, IAppError} from './error.model';
+import {NextFunction, Request, Response} from 'express';
 
 export  const errorMiddleware = (error: IAppError, req: Request, res: Response, next: NextFunction): void => {
     const statusCode = getStatusCode(error);

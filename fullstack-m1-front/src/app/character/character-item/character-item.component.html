@@ -11,4 +11,9 @@
             (click)="onAttributeClick(CharacterItemAttribute.birthYear)">
     {{ item?.birthYear || 1970 }}
   </mat-chip>
+  <a mat-button *ngIf="isDetail == false" [routerLink]="item?.id?.toString()">Détail</a>
+  <mat-chip (click)="remove()">
+    Supprimer
+  </mat-chip>
 </mat-chip-list>
+<a mat-button *ngIf="isDetail" routerLink="/characters">Retour à la liste</a>

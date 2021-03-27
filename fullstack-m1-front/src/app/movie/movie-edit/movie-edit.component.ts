@@ -31,12 +31,14 @@ export class MovieEditComponent {
   save(): void {
     if (this.formGroup.valid) {
       const movie: IMovie = {
+        id: null,
         title: this.formGroup.value.title,
         imageUrl: this.formGroup.value.imageUrl,
         year: this.formGroup.value.year
       };
       this.movieService.saveItem(movie)
         .subscribe(createdMovie => console.log(createdMovie));
+      this.reset();
     }
   }
 

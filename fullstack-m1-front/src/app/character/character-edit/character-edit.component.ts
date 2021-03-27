@@ -1,7 +1,7 @@
 import { Component} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {CharacterService} from '../character.service';
-import {ICharacter} from '../character.model';
+import {ICharacterDto} from '../../common/resource/character/character.dto';
 
 @Component({
   selector: 'app-character-edit',
@@ -23,26 +23,27 @@ export class CharacterEditComponent {
       id: [undefined],
       firstName: [undefined, [Validators.required, Validators.minLength(2)]],
       lastName: [undefined, [Validators.required, Validators.minLength(2)]],
-      birthYear: [undefined, [Validators.max(9999)]]
+      age: [undefined, [Validators.required, Validators.min(0)]]
     });
     this.reset();
   }
 
   save(): void {
     if (this.formGroup.valid) {
-      const character: ICharacter = {
+      const character: ICharacterDto = {
+        id: null,
         firstName: this.formGroup.value.firstName,
         lastName: this.formGroup.value.lastName,
-        birthYear: this.formGroup.value.birthYear
+        age: this.formGroup.value.age
       };
       this.characterService.saveItem(character)
         .subscribe(createdCharacter => console.log(createdCharacter));
+      this.reset();
     }
   }
 
   reset(): void {
     this.formGroup.reset({
-      birthYear: 1970
     });
   }
 

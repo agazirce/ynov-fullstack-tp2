@@ -10,11 +10,19 @@ export class MovieService {
     private movieResource: MovieResource
   ) { }
 
-  getItems(): Observable<IMovie[]> {
+  getAllItems(): Observable<IMovie[]> {
     return this.movieResource.findAll();
+  }
+
+  getItem(id: number): Observable<IMovie> {
+    return this.movieResource.findOne(id);
   }
 
   saveItem(movie: IMovie): Observable<IMovie> {
     return this.movieResource.create(movie);
+  }
+
+  removeItem(id: number): Observable<any> {
+    return this.movieResource.remove(id);
   }
 }

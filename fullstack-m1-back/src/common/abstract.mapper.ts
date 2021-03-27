@@ -1,6 +1,3 @@
-import {ICharacter, ICharacterDto} from "../character/character.model";
-import moment from "moment";
-
 /*
  * Dto = ModelDto
  * M = Model

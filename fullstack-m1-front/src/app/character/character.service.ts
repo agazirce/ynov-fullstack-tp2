@@ -13,12 +13,13 @@ export class CharacterService {
     private characterResource: CharacterResource
   ) { }
 
-  getItems(): Observable<ICharacter[]> {
+  getAllItems(): Observable<ICharacter[]> {
     return this.characterResource.findAll()
       .pipe(
         map((dtos: ICharacterDto[]) => {
           return dtos.map(dto => {
             return {
+              id: dto.id,
               firstName: dto.firstName,
               lastName: dto.lastName,
               birthYear: moment().subtract(dto.age, 'year').year()
@@ -28,21 +29,35 @@ export class CharacterService {
       );
   }
 
-  saveItem(character: ICharacter): Observable<ICharacter> {
-    const dto = {
-      firstName: character.firstName,
-      lastName: character.lastName,
-      age: moment().year() - character.birthYear
-    };
-    return this.characterResource.create(dto)
+  getItem(id: number): Observable<ICharacter> {
+    return this.characterResource.findOne(id)
       .pipe(
-        map(() => {
+        map((dto: ICharacterDto) => {
           return {
+            id: dto.id,
             firstName: dto.firstName,
             lastName: dto.lastName,
             birthYear: moment().subtract(dto.age, 'year').year()
           };
         })
       );
+  }
+
+  saveItem(character: ICharacterDto): Observable<ICharacter> {
+    return this.characterResource.create(character)
+      .pipe(
+        map(() => {
+          return {
+            id: character.id,
+            firstName: character.firstName,
+            lastName: character.lastName,
+            birthYear: moment().subtract(character.age, 'year').year()
+          };
+        })
+      );
+  }
+
+  removeItem(id: number): Observable<any> {
+    return this.characterResource.remove(id);
   }
 }

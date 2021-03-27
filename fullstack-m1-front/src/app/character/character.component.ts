@@ -20,7 +20,7 @@ export class CharacterComponent {
   }
 
   initComponent(): void {
-    this.service.getItems().subscribe(characters => {
+    this.service.getAllItems().subscribe(characters => {
       this.items = characters;
     });
   }

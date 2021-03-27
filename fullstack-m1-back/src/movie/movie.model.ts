@@ -3,6 +3,7 @@ import {sequelize} from "../common/orm/db-connect";
 export interface IMovie {
     id: number;
     title: string;
+    imageUrl: string;
     year: number;
   }
 
@@ -11,6 +12,7 @@ const { DataTypes, Model } = require('sequelize');
 export class Movie extends Model implements IMovie{
     id: number;
     title: string;
+    imageUrl: string;
     year: number;
 }
 
@@ -19,6 +21,10 @@ Movie.init({
     title: {
         type: DataTypes.STRING,
         allowNull: false
+    },
+    imageUrl: {
+        type: DataTypes.STRING,
+        allowNull: true
     },
     year: {
         type: DataTypes.INTEGER.UNSIGNED,

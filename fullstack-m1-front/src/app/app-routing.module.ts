@@ -5,6 +5,7 @@ import { MovieComponent } from './movie/movie.component';
 import {CharacterEditComponent} from './character/character-edit/character-edit.component';
 import {MovieEditComponent} from './movie/movie-edit/movie-edit.component';
 import {CharacterItemComponent} from './character/character-item/character-item.component';
+import {MovieItemComponent} from './movie/movie-item/movie-item.component';
 
 const routes: Routes = [
   {
@@ -12,12 +13,12 @@ const routes: Routes = [
     component: CharacterComponent
   },
   {
-    path: 'characters/:id',
-    component: CharacterItemComponent
-  },
-  {
     path: 'characters/edit',
     component: CharacterEditComponent
+  },
+  {
+    path: 'characters/:id',
+    component: CharacterItemComponent
   },
   {
     path: 'movies',
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'movies/edit',
     component: MovieEditComponent
+  },
+  {
+    path: 'movies/:id',
+    component: MovieItemComponent
   }
 ];
 

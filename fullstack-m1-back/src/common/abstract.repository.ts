@@ -1,10 +1,8 @@
-
-
 /*
  * M = Model
  */
 
-import {PrimaryKeyError} from "./error/repository-error.models";
+import {PrimaryKeyError} from './error/repository-error.models';
 
 export abstract class AbstractRepository<M> {
 

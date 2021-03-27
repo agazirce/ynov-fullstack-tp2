@@ -14,7 +14,15 @@ export class MovieResource {
     return this.http.get<IMovie[]>('http://localhost:3000/movies');
   }
 
+  findOne(id: number): Observable<IMovie> {
+    return this.http.get<IMovie>('http://localhost:3000/movies/' + id);
+  }
+
   create(movie: IMovie): Observable<IMovie> {
     return this.http.post<IMovie>('http://localhost:3000/movies', movie);
+  }
+
+  remove(id: number): Observable<any> {
+    return this.http.delete('http://localhost:3000/movies/' + id);
   }
 }
